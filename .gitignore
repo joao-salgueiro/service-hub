@@ -1,0 +1,11 @@
+/node_modules
+/vendor
+.env
+.env.local
+.DS_Store
+*.log
+/storage
+/bootstrap/cache
+.idea
+.vscode
+docker-compose.override.yml
