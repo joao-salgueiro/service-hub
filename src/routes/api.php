@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ProviderRegionController;
+use App\Http\Controllers\Api\BookingController;
 
 Route::post('/auth/register', [AuthController::class, 'register']);
 Route::post('/auth/login', [AuthController::class, 'login']);
@@ -17,4 +18,9 @@ Route::middleware('auth:sanctum')->group(function () {
     // Regiões de atendimento do provider
     Route::post('/provider/regions', [ProviderRegionController::class, 'store']);
     Route::get('/provider/regions', [ProviderRegionController::class, 'index']);
+
+    // Solicitações de serviço para o provider (acompanhamento)
+    Route::get('/provider/bookings', [BookingController::class, 'index']);
+    Route::post('/provider/bookings/{id}/accept', [BookingController::class, 'accept']);
+    Route::post('/provider/bookings/{id}/reject', [BookingController::class, 'reject']);
 });
