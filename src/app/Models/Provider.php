@@ -35,4 +35,9 @@ class Provider extends Model
     {
         return $this->hasMany(Review::class);
     }
+
+    public function regions()
+    {
+        return $this->hasMany(ProviderRegion::class);
+    }
 }
