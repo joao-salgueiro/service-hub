@@ -11,14 +11,15 @@ class Provider extends Model
         'phone',
         'location',
         'bio',
-        'avarage_rating',
+        'photo',
+        'average_rating',
         'total_reviews',
         'is_active',
     ];
 
     protected $casts = [
         'is_active' => 'boolean',
-        'avarage_rating' => 'decimal:2',
+        'average_rating' => 'decimal:2',
     ];
 
     protected function user(): BelongTo

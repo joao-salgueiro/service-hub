@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('location');
             $table->text('bio');
+            $table->string('photo')->nullable();
             $table->decimal('average_rating', 3, 2)->default(0);
             $table->integer('total_reviews')->default(0);
             $table->boolean('is_active')->default(true);

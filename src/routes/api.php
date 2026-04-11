@@ -23,4 +23,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/provider/bookings', [BookingController::class, 'index']);
     Route::post('/provider/bookings/{id}/accept', [BookingController::class, 'accept']);
     Route::post('/provider/bookings/{id}/reject', [BookingController::class, 'reject']);
+
+    // Perfil do prestador
+    Route::get('/provider/profile', [\App\Http\Controllers\Api\ProviderProfileController::class, 'show']);
+    Route::post('/provider/profile', [\App\Http\Controllers\Api\ProviderProfileController::class, 'update']);
 });
