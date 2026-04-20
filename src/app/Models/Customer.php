@@ -12,6 +12,7 @@ class Customer extends Model
         'user_id',
         'phone',
         'address',
+        'phone',
     ];
 
     public function user(): BelongsTo
@@ -28,4 +29,4 @@ class Customer extends Model
     {
         return $this->hasMany(Review::class);
     }
-}
+    }

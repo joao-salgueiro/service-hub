@@ -19,8 +19,7 @@ class ProviderProfileController extends Controller
         }
         return response()->json($provider->load('user'));
     }
-
-    // Atualizar perfil do prestador
+    //atualizar perfil do prestador
     public function update(Request $request)
     {
         $provider = $request->user()->provider;
@@ -55,5 +54,19 @@ class ProviderProfileController extends Controller
         }
         $provider->save();
         return response()->json($provider->load('user'));
+    }
+    //deletar conta do prestador
+    public function destroy(Request $request)
+    {
+        $provider = $request->user()->provider;
+        if (!$provider) {
+            return response()->json(['error' => 'Provider not found'], 404);
+        }
+
+        $user = $provider->user;
+        $provider->delete();
+        $user->delete();
+
+        return response()->json(['message' => 'Conta deletada com sucesso']);
     }
 }
