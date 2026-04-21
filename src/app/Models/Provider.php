@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Provider extends Model
 {
@@ -22,7 +24,7 @@ class Provider extends Model
         'average_rating' => 'decimal:2',
     ];
 
-    protected function user(): BelongTo
+    protected function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
