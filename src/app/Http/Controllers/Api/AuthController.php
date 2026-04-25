@@ -23,6 +23,8 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'type' => 'required|in:provider,customer',
+            'cpf' => 'required_if:type,provider|string',
+            'data_nascimento' => 'required_if:type,provider|date',
             'phone' => 'required|string',
             'location' => 'required_if:type,provider|string',
             'bio' => 'required_if:type,provider|string',
@@ -43,6 +45,8 @@ class AuthController extends Controller
                 'phone' => $validated['phone'],
                 'location' => $validated['location'],
                 'bio' => $validated['bio'],
+                'cpf' => $validated['cpf'],
+                'data_nascimento' => $validated['data_nascimento'],
             ]);
         } else {
             Customer::create([

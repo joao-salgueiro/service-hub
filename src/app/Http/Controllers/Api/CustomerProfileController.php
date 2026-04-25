@@ -31,7 +31,11 @@ class CustomerProfileController extends Controller
             'name'=>'nullable|string|max:255',
             'phone'=>'nullable|string',
             'address'=>'nullable|string|max:255',
-            'photo'   => 'nullable|image|max:2048'
+            'photo'   => 'nullable|image|max:2048',
+            'email' => 'nullable|email',
+            'cpf' => 'nullable|string',
+            'data_nascimento' => 'nullable|date',
+            'endereco' => 'nullable|string',
         ]);
 
         if (isset($data['name'])) {
@@ -43,6 +47,19 @@ class CustomerProfileController extends Controller
         }
         if (isset($data['address'])) {
             $customer->address = $data['address'];
+        }
+        if (isset($data['endereco'])) {
+            $customer->endereco = $data['endereco'];
+        }
+        if (isset($data['email'])) {
+            $customer->user->email = $data['email'];
+            $customer->user->save();
+        }
+         if (isset($data['cpf'])) {
+            $customer->cpf = $data['cpf'];
+        }
+        if (isset($data['data_nascimento'])) {
+            $customer->data_nascimento = $data['data_nascimento'];
         }
         if ($request->hasFile('photo')) {
             $path = $request->file('photo')->store('public/customers');

@@ -10,10 +10,14 @@ class Provider extends Model
 {
     protected $fillable = [
         'user_id',
+        'name',
         'phone',
         'location',
         'bio',
         'photo',
+        'cpf',
+        'data_nascimento',
+        'email',
         'average_rating',
         'total_reviews',
         'is_active',

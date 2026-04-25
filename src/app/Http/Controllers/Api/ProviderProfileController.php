@@ -32,6 +32,9 @@ class ProviderProfileController extends Controller
             'location' => 'nullable|string',
             'phone' => 'nullable|string',
             'name' => 'nullable|string',
+            'cpf' => 'nullable|string',
+            'data_nascimento' => 'nullable|date',
+            'email' => 'nullable|email',
             'photo' => 'nullable|image|max:2048',
         ]);
 
@@ -51,6 +54,16 @@ class ProviderProfileController extends Controller
         if ($request->hasFile('photo')) {
             $path = $request->file('photo')->store('public/providers');
             $provider->photo = basename($path);
+        }
+        if (isset($data['cpf'])) {
+            $provider->cpf = $data['cpf'];
+        }
+        if (isset($data['data_nascimento'])) {
+            $provider->data_nascimento = $data['data_nascimento'];
+        }
+        if (isset($data['email'])) {
+            $provider->user->email = $data['email'];
+            $provider->user->save();
         }
         $provider->save();
         return response()->json($provider->load('user'));

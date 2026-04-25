@@ -10,9 +10,15 @@ class Customer extends Model
 {
     protected $fillable = [
         'user_id',
+        'name',
         'phone',
         'address',
         'phone',
+        'cpf',
+        'data_nascimento',
+        'email',
+        'endereco'
+
     ];
 
     public function user(): BelongsTo
